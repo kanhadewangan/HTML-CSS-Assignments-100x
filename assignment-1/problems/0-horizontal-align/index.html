@@ -1,33 +1,76 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horizontal Align</title>
-    <style>
-        .container {
-            width: 1200px;
-            /* margin: 0px auto; */
-            background-color: red;
-        }
+    <title>Document</title>
 
-        .content {
-            height: 500px;
-        }
-    </style>
 </head>
 
 <body>
-    <div style="display: flex; justify-content: center;">
-        <div class="container">
-            <div class="content">
-                <h1>Hello World</h1>
+    <div class=" max-w-1200px  max-h-500px bg-zinc-100 mx-auto p-4">
+        <div class=" h-screen bg-gray-200 flex items-center justify-center">
+            <h1 class="text-3xl font-bold text-blue-600">Hello, Tailwind CSS!</h1>
+        </div>
+        <div class=" h-screen w-screen">
+            <div class=" flex justify-center items-center gap-4 h-30">
+                <div class=" bg-red-500 flex-1 h-full flex items-center justify-center">left</div>
+                <div class=" bg-green-300 flex-1 h-full flex items-center justify-center">right</div>
             </div>
         </div>
-    </div>
+        <h2 class=" text-xl m-3 text-tight">Grid Layout testing</h2>
+        <div class=" grid grid-cols-3 gap-4">
+            <div class=" bg-yellow-300 col-span-1 p-4 m-2">Item 1</div>
+            <div class=" bg-yellow-400  col-span-2 p-4 m-2">Item 2</div>
+            <div class=" bg-yellow-500 col-span-3 p-4 m-2">Item 3</div>
+        </div>
+        <h2 class="text-3xl text-uppercase"> grid assignment layout</h2>
+
+        <div class=" h-50 w-screen my-4">
+            <div class=" grid grid-cols-3">
+                <div class=" h-32 bg-red-500 text-center col-span-1"> left side
+                    testing purpose
+                </div>
+                <div class=" h-32 bg-red-200 col-span-2">
+                    <div class=" grid grid-cols-2 h-full">
+                        <div class="  text-center col-span-1"> top right</div>
+                        <div class=" text-center col-span-1"> bottom right</div>
+                        <div class=" text-center col-span-1"> bottom right</div>
+                        <div class=" text-center col-span-1"> bottom right</div>
+                        <div class=" text-center col-span-1"> bottom right</div>
+                        <div class=" text-center col-span-1"> bottom right</div>
+                    </div>
+                </div>
+            </div>
+            <h3 class=" text-center text-xl">VS-code Footer </h3>
+
+            <div class=" grid grid-cols-3 h-10 w-screen">
+                <div class=" col-span-1 bg-black "> 
+                    <h3 class="    text-xl font-bold  font-mono text-white text-center"> Code In any Language </h3>
+                    <p class=" m-4 text-white text-tight" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque in libero aspernatur voluptate. Dolorum quas consectetur error quod, pariatur sapiente id ducimus numquam tempore, totam ex ipsam enim maxime aliquid!</p>
+                </div>
+                <div class=" col-span-2 bg-gray-800">
+                    <div class=" grid grid-cols-5 h-full  text-white">
+                        <div class=" col-span-1 text-center "> JavaScript</div>
+                        <div class=" col-span-1 text-center "> Java</div>
+                        <div class=" col-span-1 text-center "> Rust</div>
+                        <div class=" col-span-1 text-center">Python</div>
+                        <div class=" col-span-1 text-center">C++</div>
+                        <div class=" col-span-1 text-center">C#</div>
+                        <div class=" col-span-1 text-center">HTML</div>
+                        <div class=" col-span-1 text-center">JSON</div>
+                        <div class=" col-span-1 text-center">PHP</div>
+                        <div class=" col-span-1 text-center">MarkDown</div>
+                        <div class=" col-span-1 text-center">Python</div>
+                        <div class=" col-span-1 text-center">Python</div>
+
+                        
+                    </div>
+                </div>
+            </div>
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
 </html>
