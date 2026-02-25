@@ -1,0 +1,132 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.flashcard-app {
+  background: #fff;
+  padding: 32px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  width: 350px;
+  margin-top: 40px;
+}
+
+.flashcard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flashcard {
+  width: 280px;
+  height: 180px;
+  background: #e3e7fd;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: #222;
+  margin-bottom: 18px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.4s;
+  perspective: 600px;
+}
+
+.flashcard .front,
+.flashcard .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+.flashcard .back {
+  background: #c1d3fe;
+  transform: rotateY(180deg);
+}
+
+.flashcard.flipped {
+  transform: rotateY(180deg);
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.controls button {
+  padding: 8px 16px;
+  border: none;
+  background: #4f6dff;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.controls button:hover {
+  background: #2d4dcc;
+}
+
+#add-flashcard-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+#add-flashcard-form input {
+  padding: 8px;
+  border: 1px solid #bfc9d9;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+#add-flashcard-form button {
+  background: #2ecc71;
+  color: #fff;
+  border: none;
+  padding: 8px 0;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#add-flashcard-form button:hover {
+  background: #27ae60;
+}
+
+.flashcard-list {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.flashcard-list .flashcard {
+  width: 100%;
+  height: 60px;
+  font-size: 1rem;
+  margin-bottom: 0;
+  cursor: default;
+  box-shadow: none;
+  background: #f0f4ff;
+}

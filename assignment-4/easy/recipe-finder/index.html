@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 32px;
+            margin-bottom: 24px;
+        }
+        #search-input {
+            display: block;
+            margin: 0 auto 12px auto;
+            padding: 8px 12px;
+            width: 260px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        button {
+            display: block;
+            margin: 0 auto 24px auto;
+            padding: 8px 20px;
+            background: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #388e3c;
+        }
+        #results {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 20px 28px;
+        }
+        .recipe-item {
+            border-bottom: 1px solid #eee;
+            padding: 14px 0;
+        }
+        .recipe-item:last-child {
+            border-bottom: none;
+        }
+        .recipe-title {
+            font-weight: bold;
+            color: #222;
+            font-size: 1.1em;
+        }
+        .recipe-details {
+            color: #666;
+            font-size: 0.97em;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Recipe Finder</h1>
+    <input type="text" name="search" id="search-input" placeholder="Search for recipes...">
+    <button onclick="searchRecipes()">Search</button>
+    <div id="results"></div>
+</body>
+<script src="script.js"></script>
+</html>

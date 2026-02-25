@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: #f0f4f8;
+            color: #222;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            margin-top: 40px;
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+        }
+        h2 {
+            margin: 20px 0 10px 0;
+            font-size: 1.3rem;
+        }
+        #selected-weather {
+            margin: 15px 0 25px 0;
+            font-size: 1.1rem;
+            color: #1976d2;
+            min-height: 24px;
+        }
+        #weatherList {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        #weatherList > div {
+            background: #fff;
+            border: 2px solid #1976d2;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(30, 60, 90, 0.08);
+            padding: 18px 24px;
+            margin: 0;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+            min-width: 160px;
+            text-align: center;
+        }
+        #weatherList > div:hover {
+            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 6px 16px rgba(30, 60, 90, 0.16);
+            border-color: #ff9800;
+        }
+        #weatherList h2 {
+            margin: 0 0 8px 0;
+            font-size: 1.4rem;
+        }
+        #weatherList p {
+            margin: 0;
+            font-size: 1rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Weather Switcher</h1>
+    <h2>Select a Weather Condition</h2>
+    <h3 id="selected-weather"></h3>
+    <div id="weatherList"></div>
+    
+</body>
+<script>
+
+    const currentWeatherList = document.getElementById('selected-weather');
+    const weathers = [{
+        name: "Sunny",
+        icon: "☀️",
+        description: "Clear skies and bright sunshine."
+    }, {
+        name: "Cloudy",
+        icon: "☁️",
+        description: "Overcast skies with clouds."
+    }, {
+        name: "Rainy",
+        icon: "🌧️",
+        description: "Light to heavy rainfall."
+    }, {
+        name: "Snowy",
+        icon: "❄️",
+        description: "Snowfall covering the ground."
+    }];
+
+    const weatherList = document.getElementById('weatherList');
+    weathers.forEach(weather => {
+        const weatherItem = document.createElement('div');
+        weatherItem.style.border = '1px solid #ccc';
+        weatherItem.style.padding = '10px';
+        weatherItem.style.margin = '10px';
+        weatherItem.style.cursor = 'pointer';
+        weatherItem.innerHTML = `<h2>${weather.icon} ${weather.name}</h2><p>${weather.description}</p>`;
+        weatherItem.addEventListener('click', () => {
+            currentWeatherList.textContent = `Selected Weather: ${weather.name}`;
+        });
+        weatherList.appendChild(weatherItem);
+    });
+
+
+</script>
+</html>

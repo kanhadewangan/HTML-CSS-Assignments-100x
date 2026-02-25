@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Lens</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f7f7f7;
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-top: 32px;
+        margin-bottom: 16px;
+      }
+      #budget-section,
+      #expense-section {
+        max-width: 400px;
+        margin: 24px auto;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        padding: 24px 32px;
+      }
+      #budget,
+      #remaining-budget {
+        text-align: center;
+        color: #444;
+        margin-bottom: 12px;
+      }
+      #budget-input,
+      #expense-input,
+      #expense-description-input {
+        display: block;
+        margin: 12px auto;
+        padding: 10px 14px;
+        width: 90%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1em;
+        box-sizing: border-box;
+        transition: border-color 0.2s;
+      }
+      #budget-input:focus,
+      #expense-input:focus,
+      #expense-description-input:focus {
+        border-color: #1976d2;
+        outline: none;
+      }
+      button {
+        display: block;
+        margin: 16px auto 0 auto;
+        padding: 10px 22px;
+        background: #1976d2;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 1em;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          box-shadow 0.2s;
+        box-shadow: 0 1px 4px rgba(25, 118, 210, 0.08);
+      }
+      button:hover {
+        background: #1565c0;
+        box-shadow: 0 2px 8px rgba(25, 118, 210, 0.12);
+      }
+      .alert {
+        max-width: 400px;
+        margin: 16px auto;
+        padding: 12px 18px;
+        background: #ffe0e0;
+        color: #b71c1c;
+        border-radius: 6px;
+        text-align: center;
+        font-size: 1em;
+        box-shadow: 0 1px 4px rgba(183, 28, 28, 0.08);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Expense Lens</h1>
+    <h1 id="budget"></h1>
+    <h2 id="remaining-budget"></h2>
+    <input type="text" placeholder=" Enter Your Budget" id="budget-input" />
+    <button onclick="updateBudget()">Update Budget</button>
+    <div>
+      <input
+        type="text"
+        id="expense-input"
+        placeholder="Enter expense amount"
+      />
+      <input
+        type="text"
+        id="expense-description-input"
+        placeholder="Enter expense description"
+      />
+      <button onclick="addExpense()" id="add-expense-button">
+        Add Expense
+      </button>
+    </div>
+    <div id="expense-list"></div>
+  </body>
+  <script>
+    const budgetinp = document.getElementById("budget-input");
+    const budgetDisplay = document.getElementById("budget");
+    const remainingBudgetDisplay = document.getElementById("remaining-budget");
+    var totalExpenses = 0;
+    var budget = 0;
+
+    const expenseDescriptionInput = document.getElementById(
+      "expense-description-input",
+    );
+    const descriptionArray = [];
+
+    function updateBudget() {
+      budget = parseFloat(budgetinp.value);
+      budgetDisplay.textContent = `Your Budget: $${budget}`;
+    }
+       function displayExpenseList() {
+      const expenseList = document.getElementById("expense-list");
+      expenseList.innerHTML = "<h3>Expense List:</h3>";
+      descriptionArray.forEach((description, index) => {
+        const expenseItem = document.createElement("div");
+        expenseItem.textContent = `${index + 1}. ${description}`;
+        expenseList.appendChild(expenseItem);
+      });
+    }
+
+    function addExpense() {
+      const expenseInput = document.getElementById("expense-input");
+      const expenseAmount = parseFloat(expenseInput.value);
+      const expenseDescription = expenseDescriptionInput.value;
+      if (!expenseAmount || !expenseDescription) {
+        alert("Please enter both expense amount and description.");
+        return;
+      }
+      if (isNaN(expenseAmount)) {
+        alert("Please enter a valid expense amount.");
+        return;
+      }
+      totalExpenses += expenseAmount;
+      descriptionArray.push(expenseDescription);
+      if(totalExpenses > budget){
+        alert("Warning: Your expenses exceed your budget!");
+        return;
+      }
+
+      const remainingBudget = budget - totalExpenses;
+      alert(
+        `Expense added: $${expenseAmount}\nTotal Expenses: $${totalExpenses}\nRemaining Budget: $${remainingBudget}`,
+      );
+      remainingBudgetDisplay.textContent = `Remaining Budget: $${remainingBudget}`;
+      expenseInput.value = "";
+      if (remainingBudget > budget) {
+        alert("Warning: Your expenses exceed your budget!");
+        return;
+      }
+
+      
+      displayExpenseList();
+    }
+   
+  
+    
+    console.log(
+      `Total Expenses: $${totalExpenses}, Remaining Budget: $${budget - totalExpenses}`,
+    );
+  </script>
+</html>
